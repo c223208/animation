@@ -1,6 +1,7 @@
-from moviepy.editor import *
+from moviepy.editor import ImageClip, CompositeVideoClip
 from PIL import Image, ImageDraw, ImageFont
 import numpy as np
+
 
 # 入力画像パス
 image_path = "your_image.png"  # アップロードした画像のファイル名
