@@ -1,4 +1,4 @@
-from moviepy.editor import ImageClip, CompositeVideoClip
+from moviepy import ImageClip, CompositeVideoClip
 from PIL import Image, ImageDraw, ImageFont
 import numpy as np
 
