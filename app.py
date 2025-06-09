@@ -35,15 +35,15 @@ draw = ImageDraw.Draw(txt_img)
 font = ImageFont.truetype(font_path, font_size)
 draw.text((0, 0), text, font=font, fill="white")
 txt_np = np.array(txt_img)
-txt_clip = ImageClip(txt_np, transparent=True).set_duration(clip_duration)
+txt_clip = ImageClip(txt_np, transparent=True).with_duration(clip_duration)
 
 def wave_position(t):
     x = video_width - t * (video_width + 200) / clip_duration
     y = video_height - 80 + 10 * np.sin(2 * np.pi * t)
     return (x, y)
 
-txt_anim = txt_clip.set_position(wave_position)
+txt_anim = txt_clip.with_position(wave_position)
 
 # 合成
-final_clip = CompositeVideoClip([base_clip, sheep_anim, txt_anim]).set_duration(clip_duration)
+final_clip = CompositeVideoClip([base_clip, sheep_anim, txt_anim]).with_duration(clip_duration)
 final_clip.write_videofile("sheep_animation.mp4", fps=24)
