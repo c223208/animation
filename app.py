@@ -44,6 +44,11 @@ def wave_position(t):
 
 txt_anim = txt_clip.with_position(wave_position)
 
+# 各クリップのサイズをプリント
+print("Base clip size:", base_clip.size)
+print("Sheep clip size:", sheep_anim.size)
+print("Text clip size:", txt_anim.size)
+
 # 合成
 final_clip = CompositeVideoClip([base_clip, sheep_anim, txt_anim]).with_duration(clip_duration)
 final_clip.write_videofile("sheep_animation.mp4", fps=24)
