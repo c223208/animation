@@ -24,7 +24,7 @@ def sheep_pos(t):
     y = video_height / 2 - 50 + 30 * np.sin(np.pi * t)
     return (x, y)
 
-sheep_anim = sheep_clip.set_position(sheep_pos)
+sheep_anim = sheep_clip.with_position(sheep_pos)
 
 # テキストアニメーション（こまどりフォントはDL必要）
 text = "ふたり反省会"
