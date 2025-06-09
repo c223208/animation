@@ -13,7 +13,7 @@ video_width, video_height = base_image.size
 clip_duration = 3
 
 # 背景動画
-base_clip = ImageClip(image_np).set_duration(clip_duration)
+base_clip = ImageClip(image_np).with_duration(clip_duration)
 
 # 羊の切り出し（座標調整必要）
 sheep_crop = base_image.crop((280, 150, 490, 300))
