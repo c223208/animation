@@ -20,11 +20,11 @@ base_clip = ImageClip(image_np).with_duration(clip_duration)
 # sheep_clip = ImageClip(np.array(sheep_crop)).with_duration(clip_duration).resized(height=120)
 
 # 羊のアニメーション
-sheep_clip = ImageClip("sheep.png").with_duration(clip_duration).resized(height=120)
+sheep_clip = ImageClip("sheep.png").with_duration(clip_duration)
 
 def sheep_pos(t):
     x = video_width - t * (video_width + 200) / clip_duration
-    y = video_height / 2 - 50 + 30 * np.sin(np.pi * t)
+    y = (video_height - sheep_clip.h) / 2 - 50 + 30 * np.sin(np.pi * t)
     return (x, y)
 
 sheep_anim = sheep_clip.with_position(sheep_pos)
@@ -32,7 +32,7 @@ sheep_anim = sheep_clip.with_position(sheep_pos)
 # テキストアニメーション（こまどりフォントはDL必要）
 text = "ふたり反省会"
 font_path = "KOMADORI.otf"  # フォントファイルのパス
-font_size = 50
+font_size = 100
 txt_img = Image.new("RGBA", (400, 80), (0, 0, 0, 0))
 draw = ImageDraw.Draw(txt_img)
 font = ImageFont.truetype(font_path, font_size)
