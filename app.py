@@ -29,29 +29,10 @@ def sheep_pos(t):
 
 sheep_anim = sheep_clip.with_position(sheep_pos)
 
-# テキストアニメーション（こまどりフォントはDL必要）
-text = "ふたり反省会"
-font_path = "KOMADORI.otf"  # フォントファイルのパス
-font_size = 100
-txt_img = Image.new("RGBA", (400, 80), (0, 0, 0, 0))
-draw = ImageDraw.Draw(txt_img)
-font = ImageFont.truetype(font_path, font_size)
-draw.text((0, 0), text, font=font, fill="white")
-txt_np = np.array(txt_img)
-txt_clip = ImageClip(txt_np, transparent=True).with_duration(clip_duration)
-
-def wave_position(t):
-    x = video_width - t * (video_width + 200) / clip_duration
-    y = video_height - 100 + 10 * np.sin(2 * np.pi * t)
-    return (x, y)
-
-txt_anim = txt_clip.with_position(wave_position)
-
 # 各クリップのサイズをプリント
 print("Base clip size:", base_clip.size)
 print("Sheep clip size:", sheep_anim.size)
-print("Text clip size:", txt_anim.size)
 
 # 合成
-final_clip = CompositeVideoClip([base_clip, sheep_anim, txt_anim]).with_duration(clip_duration)
+final_clip = CompositeVideoClip([base_clip, sheep_anim]).with_duration(clip_duration)
 final_clip.write_videofile("sheep_animation.mp4", fps=24)
