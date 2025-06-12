@@ -24,7 +24,7 @@ sheep_clip = ImageClip("sheep.png").with_duration(clip_duration)
 
 def sheep_pos(t):
     x = video_width - t * (video_width + 200) / clip_duration
-    y = (video_height - sheep_clip.h) / 2 - 50 + 30 * np.sin(np.pi * t)
+    y = (video_height - sheep_clip.h) / 2 - 80 + 30 * np.sin(np.pi * t)
     return (x, y)
 
 sheep_anim = sheep_clip.with_position(sheep_pos)
@@ -42,7 +42,7 @@ txt_clip = ImageClip(txt_np, transparent=True).with_duration(clip_duration)
 
 def wave_position(t):
     x = video_width - t * (video_width + 200) / clip_duration
-    y = video_height - 80 + 10 * np.sin(2 * np.pi * t)
+    y = video_height - 50 + 10 * np.sin(2 * np.pi * t)
     return (x, y)
 
 txt_anim = txt_clip.with_position(wave_position)
